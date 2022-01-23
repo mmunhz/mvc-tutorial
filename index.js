@@ -10,9 +10,6 @@ const Task = require('./models/Task')
 app.engine('handlebars', engine())
 app.set('view engine', 'handlebars')
 
-const taskRoutes = require('./routes/taskRoutes')
-app.use('/tasks', taskRoutes)
-
 app.use(
     express.urlencoded({
         extended: true
@@ -20,6 +17,9 @@ app.use(
 )
 
 app.use(express.json())
+
+const taskRoutes = require('./routes/taskRoutes')
+app.use('/tasks', taskRoutes)
 
 app.use(express.static('public'))
 
